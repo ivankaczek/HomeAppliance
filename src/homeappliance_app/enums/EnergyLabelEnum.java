@@ -10,7 +10,7 @@ package homeappliance_app.enums;
  * @author Ivan
  */
 public enum EnergyLabelEnum {
-    A("A",1000), B("B",800), C("C",600), D("D",500), E("E",300), F("F",100);
+    A("A",100), B("B",80), C("C",60), D("D",50), E("E",30), F("F",10);
     
     private String energyLabelCharacter;
     private Integer pricePerEnergyLabel;

@@ -8,21 +8,24 @@ package homeappliance_app.entities;
 import homeappliance_app.enums.ColourEnum;
 import homeappliance_app.enums.EnergyLabelEnum;
 
+import homeappliance_app.services.HomeApplianceServices;
+
 /**
  *
  * @author Ivan
  */
 public class HomeAppliance {
     
-   private double homeApplPrice;
-   private ColourEnum homeApplColour;
-   private EnergyLabelEnum homeApplEnergyLabel;
-   private double homeApplWeight;
+   protected double homeApplPrice;
+   protected ColourEnum homeApplColour;
+   protected EnergyLabelEnum homeApplEnergyLabel;
+   protected double homeApplWeight;
+   protected HomeApplianceServices serv = new HomeApplianceServices();
 
     public HomeAppliance() {
     }
 
-    public HomeAppliance(double homeApplPrice, double homeApplColour, EnergyLabelEnum homeApplEnergyLabel, double homeApplWeight) {
+    public HomeAppliance(double homeApplPrice, ColourEnum homeApplColour, EnergyLabelEnum homeApplEnergyLabel, double homeApplWeight) {
         this.homeApplPrice = homeApplPrice;
         this.homeApplColour = homeApplColour;
         this.homeApplEnergyLabel = homeApplEnergyLabel;
@@ -37,11 +40,11 @@ public class HomeAppliance {
         this.homeApplPrice = homeApplPrice;
     }
 
-    public double getHomeApplColour() {
+    public ColourEnum getHomeApplColour() {
         return homeApplColour;
     }
 
-    public void setHomeApplColour(double homeApplColour) {
+    public void setHomeApplColour(ColourEnum homeApplColour) {
         this.homeApplColour = homeApplColour;
     }
 
@@ -60,46 +63,31 @@ public class HomeAppliance {
     public void setHomeApplWeight(double homeApplWeight) {
         this.homeApplWeight = homeApplWeight;
     }
-   
-    
-    
-    
-    
-   private EnergyLabelEnum checkEnergyLabel(char aCharacter){
-       //String acharact = (String) aCharacter;
-    // how can I code this??? I just don't know
-    String option = "";
-    switch (aCharacter){
-        case 'a': 
-        case 'A':
-            option = "A";
-            break;
-        case 'b': 
-        case 'B':
-            option = "B";
-            break;    
-        case 'c': 
-        case 'C':
-            option = "C";
-            break; 
-        case 'd':
-        case 'D':
-            option = "D";
-            break;
-        case 'e':
-        case 'E':
-            option = "E";
-            break;
-        case 'f':
-        case 'F':
-            option = "F";
-            break;
-        default:
-            option = "F";
-            
+
+    @Override
+    public String toString() {
+        return "HomeAppliance{" + "homeApplPrice=" + homeApplPrice + ", homeApplColour=" + homeApplColour + ", homeApplEnergyLabel=" + homeApplEnergyLabel + ", homeApplWeight=" + homeApplWeight + '}';
     }
-       return EnergyLabelEnum.valueOf(option);
-   }
+   
+    public HomeAppliance inputApplianceInfoInDatabase(){
+        return serv.createHomeApplianceAskingQuestions();
+    }
+    
+    public void displayProductSpecifics(){
+        System.out.println("Product Specifications");
+        System.out.println("----------------------");
+        System.out.println("Colour: " + homeApplColour);
+        System.out.println("EnergyLabel: " + homeApplEnergyLabel.getEnergyLabelCharacter());
+        System.out.println("Product Weight: " + homeApplWeight + " kg");
+        System.out.println("Product Price: USD " + homeApplPrice);
+        System.out.println("----------------------");
+        
+    }
+    
+    public double calculateApplianceFinalPrice(){
+        return serv.calculateFinalPrice(homeApplWeight, homeApplEnergyLabel);
+    }
+  
     
 }
 

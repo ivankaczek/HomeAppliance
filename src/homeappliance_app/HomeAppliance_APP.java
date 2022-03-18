@@ -5,7 +5,10 @@
  */
 package homeappliance_app;
 
+import homeappliance_app.entities.HomeAppliance;
+import homeappliance_app.entities.WashingMachine;
 import homeappliance_app.enums.EnergyLabelEnum;
+import homeappliance_app.services.HomeApplianceServices;
 
 /**
  *
@@ -18,6 +21,20 @@ public class HomeAppliance_APP {
      */
     public static void main(String[] args) {
        
+        WashingMachine laundry = new WashingMachine().inputInfoWashingMachineInDatabase();
+
+               
+        WashingMachine laundry2 = new WashingMachine().inputInfoWashingMachineInDatabase();
+
+        
+        laundry.displayProductSpecifics();
+        laundry2.displayProductSpecifics();
+        
+        
+        // Maybe we DO NOT want to create a generic home appliance, in fact doing that MAKES NONSENSE!!!
+        // The idea here is to code sth, a specific method to check colour and energy label or price calculation
+        // that we eventually REUSE when a specific home appliance (a washing maschine, a tv) inherits the parent methods
+        
         
         
         
