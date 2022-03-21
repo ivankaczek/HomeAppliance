@@ -291,6 +291,48 @@ public class HomeApplianceServices {
         double maxWeight = sc.nextDouble();
         return maxWeight;
     }
+ 
+    // SPECIFIC FOR TV
+    
+    public boolean ask4TDT_tuner(){
+        System.out.println("Does the TV include a TDT Tuner 'y' (yes)/'n' (no) ?");
+        boolean hasTDT_tuner = false;
+        String userInput = sc.next().toLowerCase();
+        if(userInput.equals("y")){
+            hasTDT_tuner = true;
+        }
+        return hasTDT_tuner;
+    }
+    
+    public Integer ask4resolutionInches(){
+        System.out.println("Please indicate TV resolution in inches");
+        Integer tvResolution = sc.nextInt();
+        return tvResolution;
+    }
+    
+    public double extraPrice4tuner(boolean TDT_tuner, double basicPrice){
+        double extraPrice4tuner = 0d;
+        if (TDT_tuner){
+            extraPrice4tuner = 0.3*basicPrice;
+        }
+        return extraPrice4tuner;
+    }
+    
+    public double extraPrice4bigResolution(Integer resolutionInches){
+        double extraPriceResol = 0d;
+        if (resolutionInches > 40){
+            extraPriceResol = 50;
+        }
+        return extraPriceResol;
+    }
+    
+    
+    /*
+    • Método precioFinal():     
+                            este método será heredado y se le sumará la siguiente funcionalidad. 
+                            Si el televisor tiene una resolución mayor de 40 pulgadas, se incrementará el precio un 30% y 
+                            si tiene un sintonizador TDT incorporado, aumentará $500. 
+    */
     
 }
 

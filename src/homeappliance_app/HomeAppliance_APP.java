@@ -6,6 +6,7 @@
 package homeappliance_app;
 
 import homeappliance_app.entities.HomeAppliance;
+import homeappliance_app.entities.TV;
 import homeappliance_app.entities.WashingMachine;
 import homeappliance_app.enums.EnergyLabelEnum;
 import homeappliance_app.services.HomeApplianceServices;
@@ -21,14 +22,33 @@ public class HomeAppliance_APP {
      */
     public static void main(String[] args) {
        
+        
+        /*
+        Finalmente, en el main debemos realizar lo siguiente:
+        Vamos a crear una Lavadora y un Televisor y llamar a los métodos necesarios
+        para mostrar el precio final de los dos electrodomésticos.
+        
+        */
+        
+        
+        /*
+        TO DO: Build a list asking 2 choose which home appliance you're inputing in the system.
+        
+        */
         WashingMachine laundry = new WashingMachine().inputInfoWashingMachineInDatabase();
 
                
         WashingMachine laundry2 = new WashingMachine().inputInfoWashingMachineInDatabase();
 
+        TV tv50inWithTuner = new TV().inputTVinfoInDatabase();
+        TV tv30inNoTuner = new TV().inputTVinfoInDatabase();
+        
+        
         
         laundry.displayProductSpecifics();
         laundry2.displayProductSpecifics();
+        tv50inWithTuner.displayProductSpecifics();
+        tv30inNoTuner.displayProductSpecifics();
         
         
         // Maybe we DO NOT want to create a generic home appliance, in fact doing that MAKES NONSENSE!!!
